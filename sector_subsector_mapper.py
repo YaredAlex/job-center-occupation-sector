@@ -11,12 +11,12 @@ load_dotenv(override=True)
 
 API_KEY = os.getenv("DEEPSEEK_API_KEY",None)
 API_URL = "https://api.deepseek.com/v1/chat/completions"
-# POSITION_FILE = "D:\LMIS\Job matching\ethiopian_taxonomy\occupations.csv"
-POSITION_FILE = "D:\LMIS\job data\data_cleaning\\all_positions_unique.csv"
-# POSITION_LABEL = "PREFERREDLABEL"
-POSITION_LABEL = "informal work in eng"
-# OUTPUT_FILE = "occupations_with_sectors.csv"
-OUTPUT_FILE = "all_positions_with_sectors.csv"
+POSITION_FILE = "D:\LMIS\Job matching\ethiopian_taxonomy\occupations.csv"
+# POSITION_FILE = "D:\LMIS\job data\data_cleaning\\all_positions_unique.csv"
+POSITION_LABEL = "PREFERREDLABEL"
+# POSITION_LABEL = "informal work in eng"
+OUTPUT_FILE = "occupations_with_sectors.csv"
+# OUTPUT_FILE = "all_positions_with_sectors.csv"
 
 
 def classifier(positions, sector_sub_sectors):
@@ -100,7 +100,6 @@ def get_unmapped_positions(df):
     )
 
     unmapped_df = df[mask]
-
     # Remove duplicates to reduce token usage
     positions = unmapped_df[POSITION_LABEL].dropna().unique().tolist()
 
@@ -198,7 +197,7 @@ def sector_subsector_mapper(test_mode=True):
                                         positions,
                                         sub_sectors_json,
                                         df_positions,
-                                        batch_size=100,
+                                        batch_size=5,
                                         output_file=output_file)
                                                                                 
     if test_mode:
