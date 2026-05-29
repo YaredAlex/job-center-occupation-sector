@@ -1,3 +1,8 @@
 .env
 combined_occupation_to_skill.csv
 combined_occupation_to_skill.zip
+seed_occupations_skills_groups.zip
+occupation_to_skill_relations.csv
+occupations_with_sector_others.csv
+skills.csv
+
